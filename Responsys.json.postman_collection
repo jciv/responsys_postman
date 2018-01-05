@@ -1,0 +1,4140 @@
+
+{
+    "swagger":"2.0",
+    "info":{
+        "title":"REST API for Oracle Responsys Marketing Cloud Service",
+        "version":"2017.09.06",
+        "description":"REST API for Oracle Responsys Marketing Cloud Service",
+        "x-summary":"REST API for Oracle Responsys Marketing Cloud Service"
+    },
+    "paths":{
+        "/rest/api/v1.3/clFolders":{
+            "post":{
+                "summary":"Create Content Library Folder",
+                "operationId":"post /rest/api/v1.3/clFolders",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clFolders"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/clFolders"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "createContentLibraryFolder"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Folders"
+                ],
+                "x-internal-id":"rest-api-v1.3-clFolders-post"
+            }
+        },
+        "/rest/api/v1.3/clFolders/{folderPath}":{
+            "delete":{
+                "summary":"Delete Content Library Folder",
+                "operationId":"delete /rest/api/v1.3/clFolders/{folderPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clFolders"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"folderPath",
+                        "in":"path",
+                        "description":"The complete path of the folder starting with /contentlibrary.",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "deleteContentLibraryFolder"
+                ],
+                "tags":[
+                    "Content Library Folders"
+                ],
+                "x-internal-id":"rest-api-v1.3-clFolders-{folderPath}-delete"
+            },
+            "get":{
+                "summary":"List contents of a Content Library Folder",
+                "operationId":"get /rest/api/v1.3/clFolders/{folderPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/listClFoldersResponse"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"folderPath",
+                        "in":"path",
+                        "description":"The complete path of the folder starting with /contentlibrary.",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"type",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Specify what content of a folder needs to be listed. Allowed values are 'all', 'folders', 'docs' or 'items'. Defaults to 'all'"
+                    }
+                ],
+                "x-relation":[
+                    "listContentLibraryFolders"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "tags":[
+                    "Content Library Folders"
+                ],
+                "x-internal-id":"rest-api-v1.3-clFolders-{folderPath}-get"
+            }
+        },
+        "/rest/api/v1.3/folders/{folderName}/suppData/{tableName}/members":{
+            "post":{
+                "summary":"Merge Table Members with PK",
+                "operationId":"post /rest/api/v1.3/folders/{folderName}/suppData/{tableName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTableMemberswithpk"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"folderName",
+                        "in":"path",
+                        "description":"Folder name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"tableName",
+                        "in":"path",
+                        "description":"Table Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTableMemberswithpk"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "mergeTableMembers"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Supplemental Table Members"
+                ],
+                "x-internal-id":"rest-api-v1.3-folders-{folderName}-suppData-{tableName}-members-post"
+            },
+            "get":{
+                "summary":"Retrieve Supplemental Table Member based on a query attribute",
+                "operationId":"get /rest/api/v1.3/folders/{folderName}/suppData/{tableName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTableMemberswithoutpk"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"folderName",
+                        "in":"path",
+                        "description":"Folder name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"tableName",
+                        "in":"path",
+                        "description":"Table name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"qa",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Query Attribute. All of the Primary Key values of the Supplemental Table must be specified by repeating this parameter."
+                    },
+                    {
+                        "name":"fs",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Comma separated list of fields to retrieve or 'all'"
+                    },
+                    {
+                        "name":"id",
+                        "in":"query",
+                        "type":"string",
+                        "description":"IDs corresponding to the query attribute. All the Primary Key Values of the Supplemental Table must be specified by repeating this parameter. The order of the values must match the order of the Primary Keys specified in the 'qa' parameter."
+                    }
+                ],
+                "x-relation":[
+                    "retrieveTableMembers"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Supplemental Table Members"
+                ],
+                "x-internal-id":"rest-api-v1.3-folders-{folderName}-suppData-{tableName}-members-get"
+            },
+            "delete":{
+                "summary":"Delete Supplemental Table Member based on a query attribute",
+                "operationId":"delete /rest/api/v1.3/folders/{folderName}/suppData/{tableName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTableMemberswithoutpk"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"folderName",
+                        "in":"path",
+                        "description":"Folder name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"tableName",
+                        "in":"path",
+                        "description":"Table Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"qa",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Query Attribute. All of the Primary Key values of the Supplemental Table must be specified by repeating this parameter."
+                    },
+                    {
+                        "name":"fs",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Comma separated list of fields to retrieve or 'all'"
+                    },
+                    {
+                        "name":"id",
+                        "in":"query",
+                        "type":"string",
+                        "description":"IDs corresponding to the query attribute. All the Primary Key Values of the Supplemental Table must be specified by repeating this parameter. The order of the values must match the order of the Primary Keys specified in the 'qa' parameter."
+                    }
+                ],
+                "x-relation":[
+                    "deleteTableMembers"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Supplemental Table Members"
+                ],
+                "x-internal-id":"rest-api-v1.3-folders-{folderName}-suppData-{tableName}-members-delete"
+            }
+        },
+        "/rest/api/v1.3/folders/{folderName}/suppData/{tableName}/members ":{
+            "post":{
+                "summary":"Merge Table Members without PK",
+                "description":"This operation is used to merge (update) Supplemental Table Members without PK.",
+                "operationId":"post /rest/api/v1.3/folders/{folderNam}/suppData/{tableName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTableMemberswithoutpk"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"folderName",
+                        "in":"path",
+                        "description":"Folder Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"tableName",
+                        "in":"path",
+                        "description":"Table Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTableMemberswithoutpk"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "mergeTableMembers"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Supplemental Table Members"
+                ],
+                "x-internal-id":"rest-api-v1.3-folders-{folderName}-suppData-{tableName}-members -post"
+            }
+        },
+        "/rest/api/v1.3/lists":{
+            "get":{
+                "summary":"Fetch All Profile Lists",
+                "operationId":"get /rest/api/v1.3/lists",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/lists-collection"
+                        }
+                    }
+                },
+                "parameters":[
+                ],
+                "x-relation":[
+                    "instances"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile Lists"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-get"
+            }
+        },
+        "/rest/api/v1.3/campaigns/{campaignName}/emailAttachments":{
+            "post":{
+                "summary":"Merge Trigger Email With Attachments",
+                "operationId":"post /rest/api/v1.3/campaigns/{campaignName}/emailAttachments",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/triggerEmailWithAttachmentsResponse"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/mergeTriggerEmailWithAttachments"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "mergeTriggerEmailWithAttachments"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Merge Trigger Email With Attachments"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-emailAttachments-post"
+            }
+        },
+        "/rest/api/v1.3/campaigns/{campaignName}/schedule":{
+            "post":{
+                "summary":"Create an Email or Push campaign schedule",
+                "operationId":"post /rest/api/v1.3/campaigns/{campaignName}/schedule",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/create-retrieve-campaignSchedule-response"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/campaignSchedule"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "createSchedule"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Email or Push Campaign Schedule"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-schedule-post"
+            },
+            "get":{
+                "summary":"Fetch All Email or Push Campaign Schedules",
+                "operationId":"get /rest/api/v1.3/campaigns/{campaignName}/schedule",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/campaignSchedule-collection"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "instances"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Email or Push Campaign Schedule"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-schedule-get"
+            }
+        },
+        "/rest/api/v1.3/campaigns/{campaignName}/schedule/{scheduleId}":{
+            "get":{
+                "summary":"Retrieve an Email or Push campaign schedule",
+                "operationId":"get /rest/api/v1.3/campaigns/{campaignName}/schedule/{scheduleId}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/create-retrieve-campaignSchedule-response"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"scheduleId",
+                        "in":"path",
+                        "description":"Schedule Id",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "getSchedule"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Email or Push Campaign Schedule"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-schedule-{scheduleId}-get"
+            },
+            "put":{
+                "summary":"Update an Email or Push campaign schedule",
+                "operationId":"put /rest/api/v1.3/campaigns/{campaignName}/schedule/{scheduleId}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/update-delete-campaignSchedule-response"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"scheduleId",
+                        "in":"path",
+                        "description":"Schedule Id",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/update-campaignSchedule-request"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "updateSchedule"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Email or Push Campaign Schedule"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-schedule-{scheduleId}-put"
+            },
+            "delete":{
+                "summary":"Delete an Email or Push campaign schedule",
+                "operationId":"delete /rest/api/v1.3/campaigns/{campaignName}/schedule/{scheduleId}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/update-delete-campaignSchedule-response"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"scheduleId",
+                        "in":"path",
+                        "description":"Schedule Id",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "updateSchedule"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Email or Push Campaign Schedule"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-schedule-{scheduleId}-delete"
+            }
+        },
+        "/rest/api/v1.3/campaigns/{campaignName}/push ":{
+            "post":{
+                "summary":"Trigger Push Message",
+                "operationId":"post /rest/api/v1.3/campaigns/{campaignName}/push ",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/triggerPush-response"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/triggerPushMessage"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "triggerPushMessage"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Trigger Push Message"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-push -post"
+            }
+        },
+        "/rest/api/v1.3/lists/{listName}/listExtensions":{
+            "post":{
+                "summary":"Create Profile Extension",
+                "operationId":"post /rest/api/v1.3/lists/{listName}/listExtensions",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/listExtensions"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/listExtensions"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "create"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "List Extensions"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-listExtensions-post"
+            },
+            "get":{
+                "summary":"Fetch All Profile Extensions for a Profile List",
+                "operationId":"get /rest/api/v1.3/lists/{listName}/listExtensions",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/listExtensions-collection"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "instances"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "List Extensions"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-listExtensions-get"
+            }
+        },
+        "/rest/api/v1.3/folders/{folderName}/suppData":{
+            "post":{
+                "summary":"Create supplemental table",
+                "operationId":"post /rest/api/v1.3/folders/{folderName}/suppData",
+                "responses":{
+                    "default":{
+                        "description":"true/false indicating success or failure.",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTableResponse"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"folderName",
+                        "in":"path",
+                        "description":"Folder Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/supplementalTable"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "createSupplementalTable"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Supplemental Table"
+                ],
+                "x-internal-id":"rest-api-v1.3-folders-{folderName}-suppData-post"
+            }
+        },
+        "/rest/api/v1.3/campaigns/{campaignName}/sms":{
+            "post":{
+                "summary":"Merge Trigger SMS",
+                "operationId":"post /rest/api/v1.3/campaigns/{campaignName}/sms",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/triggerSmsResponse"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/mergeTriggerSMS"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "mergeTriggerSMS"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Merge Trigger SMS"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-sms-post"
+            }
+        },
+        "/rest/api/v1.3/campaigns/{campaignName}/email ":{
+            "post":{
+                "summary":"Trigger Email Message",
+                "operationId":"post /rest/api/v1.3/campaigns/{campaignName}/email ",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/triggerEmail-response"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/triggerEmailMessage"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "triggerEmailMessage"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Trigger Email Message"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-email -post"
+            }
+        },
+        "/rest/api/v1.3/campaigns/{campaignName}/email":{
+            "post":{
+                "summary":"Merge Trigger Email",
+                "operationId":"post /rest/api/v1.3/campaigns/{campaignName}/email",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/triggerEmailResponse"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"campaignName",
+                        "in":"path",
+                        "description":"Campaign Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/mergeTriggerEmail"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "mergeTriggerEmail"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Merge Trigger Email"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-{campaignName}-email-post"
+            }
+        },
+        "/rest/api/v1.3/lists/{listName}/members":{
+            "post":{
+                "summary":"Merge List Recipients",
+                "operationId":"post /rest/api/v1.3/lists/{listName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileListRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/profileListRecipients"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "mergeListRecipients"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile List Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-members-post"
+            },
+            "get":{
+                "summary":"Retrieve List Recipient using query attribute",
+                "operationId":"get /rest/api/v1.3/lists/{listName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileListRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"qa",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Query Attribute. Can be either 'r' (RIID_), 'e' (EMAIL_ADDRESS_), 'c' (CUSTOMER_ID_), or 'm' (MOBILE_NUMBER_)."
+                    },
+                    {
+                        "name":"fs",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Comma separated list of fields to retrieve or 'all'"
+                    },
+                    {
+                        "name":"id",
+                        "in":"query",
+                        "type":"string",
+                        "description":"ID corresponding to the query attribute"
+                    }
+                ],
+                "x-relation":[
+                    "retrieveListRecipients"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile List Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-members-get"
+            }
+        },
+        "/rest/api/v1.3/lists/{listName}/members/{riid}":{
+            "get":{
+                "summary":"Retrieve List Recipient using RIID",
+                "operationId":"get /rest/api/v1.3/lists/{listName}/members/{riid}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileListRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"riid",
+                        "in":"path",
+                        "description":"RIID",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"fs",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Comma separated list of fields to retrieve or 'all'"
+                    }
+                ],
+                "x-relation":[
+                    "retrieveListRecipientsRIID"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile List Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-members-{riid}-get"
+            },
+            "delete":{
+                "summary":"Delete List Recipients based on RIID.",
+                "operationId":"delete /rest/api/v1.3/lists/{listName}/members/{riid}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileListRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"riid",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "mergeListRecipients"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile List Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-members-{riid}-delete"
+            }
+        },
+        "/rest/api/v1.3/campaigns":{
+            "get":{
+                "summary":"Fetch All EMD Email Campaigns",
+                "operationId":"get /rest/api/v1.3/campaigns",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/email-campaigns-collection"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"offset",
+                        "in":"query",
+                        "type":"integer",
+                        "description":"Starts at 0 and indicates the record number for the response result set"
+                    },
+                    {
+                        "name":"limit",
+                        "in":"query",
+                        "type":"integer",
+                        "description":"Number of campaigns to return in the response (defaults to 200 and cannot exceed 200)"
+                    },
+                    {
+                        "name":"type",
+                        "in":"query",
+                        "type":"string",
+                        "description":"The type of campaigns to return in the response (email, defaults to email)"
+                    }
+                ],
+                "x-relation":[
+                    "instances"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Get All Campaigns"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns-get"
+            }
+        },
+        "/rest/api/v1.3/campaigns ":{
+            "get":{
+                "summary":"Fetch All Push Campaigns",
+                "operationId":"get /rest/api/v1.3/campaigns ",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/push-campaigns-collection"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"offset",
+                        "in":"query",
+                        "type":"integer",
+                        "description":"Starts at 0 and indicates the record number for the response result set"
+                    },
+                    {
+                        "name":"limit",
+                        "in":"query",
+                        "type":"integer",
+                        "description":"Number of campaigns to return in the response (defaults to 200 and cannot exceed 200)"
+                    },
+                    {
+                        "name":"type",
+                        "in":"query",
+                        "type":"string",
+                        "description":"The type of campaigns to return in the response (push)"
+                    }
+                ],
+                "x-relation":[
+                    "instances"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Get All Campaigns"
+                ],
+                "x-internal-id":"rest-api-v1.3-campaigns -get"
+            }
+        },
+        "/rest/api/v1.3/lists/{listName}/listExtensions/{petName}/members":{
+            "post":{
+                "summary":"Merge Profile Extension Recipients",
+                "operationId":"post /rest/api/v1.3/lists/{listName}/listExtensions/{petName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileExtensionRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"petName",
+                        "in":"path",
+                        "description":"Pet name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/profileExtensionRecipients"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "mergeProfileExtensionRecipients"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile Extension Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-listExtensions-{petName}-members-post"
+            },
+            "get":{
+                "summary":"Retrieve Profile Extension Recipient using Query Attribute",
+                "operationId":"get /rest/api/v1.3/lists/{listName}/listExtensions/{petName}/members",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileExtensionRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"petName",
+                        "in":"path",
+                        "description":"Pet Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"qa",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Query Attribute. Can be either 'r', 'e', 'c' or 'm'"
+                    },
+                    {
+                        "name":"fs",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Comma separated list of fields to retrieve or 'all'"
+                    },
+                    {
+                        "name":"id",
+                        "in":"query",
+                        "type":"string",
+                        "description":"ID corresponding to the query attribute"
+                    }
+                ],
+                "x-relation":[
+                    "retrieveProfileExtensionRecipients"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile Extension Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-listExtensions-{petName}-members-get"
+            }
+        },
+        "/rest/api/v1.3/lists/{listName}/listExtensions/{petName}/members/{riid}":{
+            "get":{
+                "summary":"Retrieve Profile Extension Recipient using RIID",
+                "operationId":"get /rest/api/v1.3/lists/{listName}/listExtensions/{petName}/members/{riid}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileExtensionRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"petName",
+                        "in":"path",
+                        "description":"Pet Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"riid",
+                        "in":"path",
+                        "description":"RIID",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"fs",
+                        "in":"query",
+                        "type":"string",
+                        "description":"Comma separated list of fields to retrieve or 'all'"
+                    }
+                ],
+                "x-relation":[
+                    "retrieveProfileExtensionRecipientsRIID"
+                ],
+                "consumes":[
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile Extension Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-listExtensions-{petName}-members-{riid}-get"
+            },
+            "delete":{
+                "summary":"Delete Profile Extension Recipient using RIID",
+                "operationId":"delete /rest/api/v1.3/lists/{listName}/listExtensions/{petName}/members/{riid}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/profileExtensionRecipients"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"listName",
+                        "in":"path",
+                        "description":"List Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"petName",
+                        "in":"path",
+                        "description":"Pet Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"riid",
+                        "in":"path",
+                        "description":"RIID",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "deleteProfileExtensionRecipientsRIID"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Profile Extension Recipients"
+                ],
+                "x-internal-id":"rest-api-v1.3-lists-{listName}-listExtensions-{petName}-members-{riid}-delete"
+            }
+        },
+        "/rest/api/v1.3/clDocs":{
+            "post":{
+                "summary":"Create a Content Library Document",
+                "operationId":"post /rest/api/v1.3/clDocs",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clDocs"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/clDocs"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "createDocument"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Documents"
+                ],
+                "x-internal-id":"rest-api-v1.3-clDocs-post"
+            }
+        },
+        "/rest/api/v1.3/clDocs/{docPath}":{
+            "post":{
+                "summary":"Update Contents of a Content Library Document",
+                "operationId":"post /rest/api/v1.3/clDocs/{docPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clDocs"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"docPath",
+                        "in":"path",
+                        "description":"The complete path of the document starting with '/contentlibrary'.",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/clDocs"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "setDocumentContent"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Documents"
+                ],
+                "x-internal-id":"rest-api-v1.3-clDocs-{docPath}-post"
+            },
+            "put":{
+                "summary":"Create a copy of a Content Library Document.",
+                "operationId":"put /rest/api/v1.3/clDocs/{docPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clDocs"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"docPath",
+                        "in":"path",
+                        "description":" Destination Document Path",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/copy-content-request"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "CopyDocumentContent"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Documents"
+                ],
+                "x-internal-id":"rest-api-v1.3-clDocs-{docPath}-put"
+            },
+            "delete":{
+                "summary":"Delete a Content Library Document",
+                "operationId":"delete /rest/api/v1.3/clDocs/{docPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clDocs"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"docPath",
+                        "in":"path",
+                        "description":"The complete path of the document starting with '/contentlibrary'.",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "deleteDocument"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Documents"
+                ],
+                "x-internal-id":"rest-api-v1.3-clDocs-{docPath}-delete"
+            },
+            "get":{
+                "summary":"Retrieve contents of a Content Library Document",
+                "operationId":"get /rest/api/v1.3/clDocs/{docPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clDocs"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"docPath",
+                        "in":"path",
+                        "description":"The complete path of the document starting with '/contentlibrary'.",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "getDocumentContent"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Documents"
+                ],
+                "x-internal-id":"rest-api-v1.3-clDocs-{docPath}-get"
+            }
+        },
+        "/rest/api/v1.3/clDocImages/{documentPath}":{
+            "post":{
+                "summary":"Update content of images in a Content Library Document",
+                "operationId":"post /rest/api/v1.3/clDocImages/{documentPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clDocImages"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"documentPath",
+                        "in":"path",
+                        "description":"The complete path of the document starting with '/contentlibrary'.",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/clDocImages"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "setDocumentImages"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Document Images"
+                ],
+                "x-internal-id":"rest-api-v1.3-clDocImages-{documentPath}-post"
+            },
+            "get":{
+                "summary":"Retrieve binary content of images in a Content Library Document",
+                "operationId":"get /rest/api/v1.3/clDocImages/{documentPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clDocImages"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"documentPath",
+                        "in":"path",
+                        "description":"The complete path of the document starting with '/contentlibrary'.",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "getDocumentImages"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Document Images"
+                ],
+                "x-internal-id":"rest-api-v1.3-clDocImages-{documentPath}-get"
+            }
+        },
+        "/rest/api/v1.3/clItems/{itemPath}":{
+            "post":{
+                "summary":"Update a Content Library Media File",
+                "operationId":"post /rest/api/v1.3/clItems/{itemPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clItems"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"itemPath",
+                        "in":"path",
+                        "description":"The complete path of the media file starting with /contentlibrary.",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/clItems"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "setContentLibraryItem"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Media Items"
+                ],
+                "x-internal-id":"rest-api-v1.3-clItems-{itemPath}-post"
+            },
+            "delete":{
+                "summary":"Delete a Content Library Media File",
+                "operationId":"delete /rest/api/v1.3/clItems/{itemPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clItems"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"itemPath",
+                        "in":"path",
+                        "description":"The complete path of the media file starting with /contentlibrary.",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "deleteContentLibraryItem"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Media Items"
+                ],
+                "x-internal-id":"rest-api-v1.3-clItems-{itemPath}-delete"
+            },
+            "get":{
+                "summary":"Retrieve contents of a Content Library Media File",
+                "operationId":"get /rest/api/v1.3/clItems/{itemPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clItems"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"itemPath",
+                        "in":"path",
+                        "description":"The complete path of the media file starting with /contentlibrary.",
+                        "type":"string",
+                        "required":true
+                    }
+                ],
+                "x-relation":[
+                    "getContentLibraryItem"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Media Items"
+                ],
+                "x-internal-id":"rest-api-v1.3-clItems-{itemPath}-get"
+            }
+        },
+        "/rest/api/v1.3/clItems":{
+            "post":{
+                "summary":"Create a Content Library Media File",
+                "description":"This operation is used to create a content library media file.",
+                "operationId":"post /rest/api/v1.3/clItems",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clItems"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/clItems"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "setContentLibraryItem"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Media Items"
+                ],
+                "x-internal-id":"rest-api-v1.3-clItems-post"
+            }
+        },
+        "/rest/api/v1.3/clItems/{destinationItemPath} ":{
+            "put":{
+                "summary":"Create a copy of a Content Library Media file.",
+                "description":"This operation is used to create a copy of a Content Library Media file.",
+                "operationId":"post /rest/api/v1.3/clItems/{destinationItemPath}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/clItems"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"destinationItemPath",
+                        "in":"path",
+                        "description":"The complete path of the media file starting with /contentlibrary.",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/copy-contentItem-request"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "setContentLibraryItem"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Content Library Media Items"
+                ],
+                "x-internal-id":"rest-api-v1.3-clItems-{destinationItemPath} -put"
+            }
+        },
+        "/rest/api/v1.3/events/{eventName}":{
+            "post":{
+                "summary":"Trigger Custom Event",
+                "operationId":"post /rest/api/v1.3/events/{eventName}",
+                "responses":{
+                    "default":{
+                        "description":"",
+                        "schema":{
+                            "$ref":"#/definitions/triggerEvent-response"
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "name":"eventName",
+                        "in":"path",
+                        "description":"Event Name",
+                        "type":"string",
+                        "required":true
+                    },
+                    {
+                        "name":"body",
+                        "in":"body",
+                        "description":"Request Body",
+                        "schema":{
+                            "$ref":"#/definitions/triggerCustomEvent"
+                        }
+                    }
+                ],
+                "x-relation":[
+                    "triggerCustomEvent"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "tags":[
+                    "Trigger Custom Event"
+                ],
+                "x-internal-id":"rest-api-v1.3-events-{eventName}-post"
+            }
+        }
+    },
+    "definitions":{
+        "clFolders":{
+            "title":"Content Library Folders",
+            "type":"object",
+            "properties":{
+                "folderPath":{
+                    "description":"The complete path of the folder starting with /contentlibrary.",
+                    "type":"string"
+                }
+            },
+            "required":[
+                "folderPath"
+            ]
+        },
+        "listClFoldersResponse":{
+            "title":"List Content Library Folders Response",
+            "type":"object",
+            "properties":{
+                "folders":{
+                    "description":"Folders within the Content Library Folder",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "folderPath":{
+                                "type":"string",
+                                "description":"Full path of the Content Library folder"
+                            }
+                        }
+                    }
+                },
+                "documents":{
+                    "description":"Content Library Documents within the Content Library Folder",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "documentPath":{
+                                "type":"string",
+                                "description":"Full path of the Content Library Document"
+                            },
+                            "content":{
+                                "type":"string",
+                                "description":"Document content"
+                            }
+                        }
+                    }
+                },
+                "items":{
+                    "description":"Media files within the Content Library Folder",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "itemPath":{
+                                "type":"string",
+                                "description":"Full path of the Content Library media file"
+                            },
+                            "itemData":{
+                                "type":"string",
+                                "format":"byte",
+                                "description":"Base64 encoded binary string of the media file content."
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "supplementalTableMemberswithoutpk":{
+            "title":"Supplemental Table Members without PK",
+            "type":"object",
+            "properties":{
+                "recordData":{
+                    "description":"Record data that represents Field Names and corresponding values for the member.",
+                    "required":[
+                        "fieldNames",
+                        "records"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "fieldNames":{
+                            "type":"array",
+                            "description":"Field Names in the Supplemental Table",
+                            "items":{
+                                "type":"string"
+                            }
+                        },
+                        "records":{
+                            "type":"array",
+                            "description":"Array of values corresponding to the fieldNames. Each element in the array represents a single member.",
+                            "items":{
+                                "type":"array",
+                                "description":"Field Values for the member in the Supplemental Table",
+                                "items":{
+                                    "type":"string"
+                                }
+                            }
+                        },
+                        "mapTemplateName":{
+                            "type":"string",
+                            "description":"The Map Template in Responsys that can be used to map Field Names of the Supplemental Table to Column Names."
+                        }
+                    }
+                },
+                "insertOnNoMatch":{
+                    "description":"Specifies whether a member record should be inserted into the Supplemental Table if it does not already exist.",
+                    "type":"boolean"
+                },
+                "updateOnMatch":{
+                    "description":"Specifies whether a member record should be updated in the Supplemental Table if it already exists.",
+                    "enum":[
+                        "REPLACE_ALL",
+                        "NO_UPDATE"
+                    ],
+                    "type":"string"
+                },
+                "matchColumnNames":{
+                    "description":"The column names to be used to match the member record to the Supplemental Table records. Only used during the merge operation.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                }
+            },
+            "required":[
+                "recordData",
+                "insertOnNoMatch",
+                "updateOnMatch",
+                "matchColumnNames"
+            ]
+        },
+        "supplementalTableMemberswithpk":{
+            "title":"Supplemental Table Members with PK",
+            "type":"object",
+            "properties":{
+                "recordData":{
+                    "description":"Record data that represents Field Names and corresponding values for the member.",
+                    "required":[
+                        "fieldNames",
+                        "records"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "fieldNames":{
+                            "type":"array",
+                            "description":"Field Names in the Supplemental Table",
+                            "items":{
+                                "type":"string"
+                            }
+                        },
+                        "records":{
+                            "type":"array",
+                            "description":"Array of values corresponding to the fieldNames. Each element in the array represents a single member.",
+                            "items":{
+                                "type":"array",
+                                "description":"Field Values for the member in the Supplemental Table",
+                                "items":{
+                                    "type":"string"
+                                }
+                            }
+                        },
+                        "mapTemplateName":{
+                            "type":"string",
+                            "description":"The Map Template in Responsys that can be used to map Field Names of the Supplemental Table to Column Names."
+                        }
+                    }
+                },
+                "insertOnNoMatch":{
+                    "description":"Specifies whether a member record should be inserted into the Supplemental Table if it does not already exist.",
+                    "type":"boolean"
+                },
+                "updateOnMatch":{
+                    "description":"Specifies whether a member record should be updated in the Supplemental Table if it already exists.",
+                    "enum":[
+                        "REPLACE_ALL",
+                        "NO_UPDATE"
+                    ],
+                    "type":"string"
+                },
+                "required":{
+                }
+            }
+        },
+        "lists":{
+            "title":"Profile Lists",
+            "type":"object",
+            "properties":{
+                "name":{
+                    "description":"The name of the Profile List",
+                    "type":"string"
+                },
+                "folderName":{
+                    "description":"The name of the folder in which the Profile List exists",
+                    "type":"string"
+                },
+                "fields":{
+                    "description":"The Profile List Fields",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "fieldName":{
+                                "type":"string",
+                                "description":"The Profile List Field Name"
+                            },
+                            "fieldType":{
+                                "type":"string",
+                                "description":"The Profile List Field Type"
+                            }
+                        }
+                    }
+                }
+            },
+            "required":[
+                "name",
+                "folderName",
+                "fields"
+            ]
+        },
+        "lists-collection":{
+            "title":"Profile Lists",
+            "type":"object",
+            "properties":{
+                "items":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/lists"
+                    }
+                }
+            }
+        },
+        "mergeTriggerEmailWithAttachments":{
+            "title":"Merge Trigger Email With Attachments",
+            "type":"object",
+            "properties":{
+                "mergeTriggerRecordDataWithAttachments":{
+                    "description":"Record data that represents Field Names and corresponding values for the recipient.",
+                    "required":[
+                        "mergeTriggerRecordsWithAttachments",
+                        "fieldNames"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "mergeTriggerRecordsWithAttachments":{
+                            "type":"array",
+                            "description":"Array of values corresponding to the fieldNames. Each element in the array represents a single recipient.",
+                            "items":{
+                                "type":"object",
+                                "properties":{
+                                    "fieldValues":{
+                                        "type":"array",
+                                        "description":"Values corresponding to the fieldNames.",
+                                        "items":{
+                                            "type":"string"
+                                        }
+                                    },
+                                    "optionalData":{
+                                        "type":"array",
+                                        "description":"Optional data containing array of name value pairs.",
+                                        "items":{
+                                            "type":"object",
+                                            "properties":{
+                                                "name":{
+                                                    "type":"string"
+                                                },
+                                                "value":{
+                                                    "type":"string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "attachmentData":{
+                                        "type":"array",
+                                        "description":"Attachment data containing array of pairs of file name and content value.",
+                                        "items":{
+                                            "type":"object",
+                                            "properties":{
+                                                "name":{
+                                                    "type":"string"
+                                                },
+                                                "value":{
+                                                    "type":"string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "fieldNames":{
+                            "type":"array",
+                            "description":"Array of profile list fields that specifies the recipient record data to be sent in the request payload. Must contain the fields specified for matchColumnName1 and, if present, matchColumnName2. May contain other profile list fields as needed.",
+                            "items":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                },
+                "mergeRule":{
+                    "description":"Merge rule used to merge recipient records in a Profile List. Only used during the merge operation.",
+                    "type":"object",
+                    "properties":{
+                        "rejectRecordIfChannelEmpty":{
+                            "type":"string",
+                            "description":"String containing comma-separated channel codes that if specified will result in record rejection when the channel address field is null. Channel codes are 'E' (Email), 'M' (Mobile), 'P' (Postal Code). For example 'E,M' would indicate that a record that has a null for Email or Mobile Number value should be rejected. This parameter can also be set to null or to an empty string, which will cause the validation to not be performed for any channel, except if the matchColumnName1 parameter is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_. When matchColumnName1 is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_, then the null or empty string setting is effectively ignored for that channel."
+                        },
+                        "htmlValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'H' may represent a preference for HTML formatted email."
+                        },
+                        "textValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'T' may represent a preference for Text formatted email."
+                        },
+                        "matchColumnName1":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"First match column for determining whether an insert or update should occur."
+                        },
+                        "insertOnNoMatch":{
+                            "type":"boolean",
+                            "description":"Indicates what should be done for records where a match is not found (true = insert / false = no insert)."
+                        },
+                        "optinValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-in status data that represents an opt-in status. For example, 'I' may represent an opt-in status."
+                        },
+                        "defaultPermissionStatus":{
+                            "enum":[
+                                "OPTIN",
+                                "OPTOUT"
+                            ],
+                            "type":"string",
+                            "description":"This value must be specified as either OPTIN or OPTOUT and would be applied to all of the records contained in the API call. If this value is not explicitly specified, then it is set to OPTOUT."
+                        },
+                        "optoutValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-out status data that represents an optout status. For example, '0' may represent an opt-out status."
+                        },
+                        "matchColumnName2":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"Second match column for determining whether an insert or update should occur. (optional)."
+                        },
+                        "updateOnMatch":{
+                            "enum":[
+                                "REPLACE_ALL",
+                                "NO_UPDATE"
+                            ],
+                            "type":"string",
+                            "description":"Controls how the existing record should be updated."
+                        },
+                        "matchOperator":{
+                            "enum":[
+                                "NONE",
+                                "AND"
+                            ],
+                            "type":"string",
+                            "description":"Operator to join match column names"
+                        }
+                    }
+                }
+            },
+            "required":[
+                "mergeTriggerRecordDataWithAttachments",
+                "mergeRule"
+            ]
+        },
+        "triggerEmailWithAttachmentsResponse":{
+            "title":"Trigger Email With Attachments Response",
+            "type":"array",
+            "description":"Array of Recipient Results.",
+            "items":{
+                "type":"object",
+                "description":"Response for individual recipient.",
+                "properties":{
+                    "errorMessage":{
+                        "type":"string",
+                        "description":"Error Message, if any, that occurred during the merge or trigger operations."
+                    },
+                    "success":{
+                        "type":"boolean",
+                        "description":"Indicates success or failure."
+                    },
+                    "recipientId":{
+                        "type":"number",
+                        "description":"The Responsys ID (RIID) of the recipient."
+                    }
+                }
+            }
+        },
+        "campaignSchedule":{
+            "title":"Email or Push Campaign Schedule",
+            "type":"object",
+            "properties":{
+                "launchOptions":{
+                    "description":"Launch Options for the schedule.",
+                    "type":"object",
+                    "properties":{
+                        "progressChunk":{
+                            "enum":[
+                                "CHUNK_10K",
+                                "CHUNK_50K",
+                                "CHUNK_100K",
+                                "CHUNK_500K",
+                                "CHUNK_1M"
+                            ],
+                            "type":"string",
+                            "description":"Progress Chunk."
+                        },
+                        "recipientLimit":{
+                            "type":"integer",
+                            "description":"Recipient Limit."
+                        },
+                        "proofLaunchType":{
+                            "enum":[
+                                "LAUNCH_TO_ADDRESS",
+                                "LAUNCH_TO_PROOFLIST",
+                                "LAUNCH_TO_ADDRESS_USING_PROOFLIST"
+                            ],
+                            "type":"string",
+                            "description":"Proof Launch type."
+                        },
+                        "progressEmailAddresses":{
+                            "type":"array",
+                            "description":"Email addresses to inform of progress.",
+                            "items":{
+                                "type":"string"
+                            }
+                        },
+                        "samplingNthOffset":{
+                            "type":"integer",
+                            "description":"Sampling offset."
+                        },
+                        "samplingNthInterval":{
+                            "type":"integer",
+                            "description":"Sampling Interval."
+                        },
+                        "proofLaunch":{
+                            "type":"boolean",
+                            "description":"Should a proof launch be performed."
+                        },
+                        "samplingNthSelection":{
+                            "type":"integer",
+                            "description":"Sampling Selection."
+                        },
+                        "proofLaunchEmail":{
+                            "type":"string",
+                            "description":"Email address for the proof launch."
+                        }
+                    }
+                },
+                "scheduleType":{
+                    "description":"Schedule Type.",
+                    "enum":[
+                        "NOW",
+                        "ONCE"
+                    ],
+                    "type":"string"
+                },
+                "scheduledTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                },
+                "recurringEndTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                }
+            },
+            "required":[
+                "scheduleType",
+                "scheduledTime"
+            ]
+        },
+        "update-campaignSchedule-request":{
+            "type":"object",
+            "title":"Update Email or Push Campaign Schedule Request",
+            "properties":{
+                "scheduleType":{
+                    "description":"Schedule Type.",
+                    "enum":[
+                        "NOW",
+                        "ONCE"
+                    ],
+                    "type":"string"
+                },
+                "scheduledTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                }
+            }
+        },
+        "update-delete-campaignSchedule-response":{
+            "type":"object",
+            "title":"Update Email or Push Campaign Schedule Response",
+            "properties":{
+                "id":{
+                    "description":"ID of the schedule.",
+                    "type":"string"
+                },
+                "scheduleType":{
+                    "description":"Schedule Type.",
+                    "enum":[
+                        "NOW",
+                        "ONCE"
+                    ],
+                    "type":"string"
+                },
+                "scheduledTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                },
+                "launchOptions":{
+                    "description":"Launch Options for the schedule.",
+                    "type":"object",
+                    "properties":{
+                        "proofLaunch":{
+                            "type":"boolean",
+                            "description":"Should a proof launch be performed."
+                        }
+                    }
+                }
+            }
+        },
+        "create-retrieve-campaignSchedule-response":{
+            "type":"object",
+            "title":"Email or Push Campaign Schedule",
+            "properties":{
+                "id":{
+                    "description":"ID of the schedule.",
+                    "type":"string"
+                },
+                "launchOptions":{
+                    "description":"Launch Options for the schedule.",
+                    "type":"object",
+                    "properties":{
+                        "progressChunk":{
+                            "enum":[
+                                "CHUNK_10K",
+                                "CHUNK_50K",
+                                "CHUNK_100K",
+                                "CHUNK_500K",
+                                "CHUNK_1M"
+                            ],
+                            "type":"string",
+                            "description":"Progress Chunk."
+                        },
+                        "recipientLimit":{
+                            "type":"integer",
+                            "description":"Recipient Limit."
+                        },
+                        "proofLaunchType":{
+                            "enum":[
+                                "LAUNCH_TO_ADDRESS",
+                                "LAUNCH_TO_PROOFLIST",
+                                "LAUNCH_TO_ADDRESS_USING_PROOFLIST"
+                            ],
+                            "type":"string",
+                            "description":"Proof Launch type."
+                        },
+                        "progressEmailAddresses":{
+                            "type":"array",
+                            "description":"Email addresses to inform of progress.",
+                            "items":{
+                                "type":"string"
+                            }
+                        },
+                        "samplingNthOffset":{
+                            "type":"integer",
+                            "description":"Sampling offset."
+                        },
+                        "samplingNthInterval":{
+                            "type":"integer",
+                            "description":"Sampling Interval."
+                        },
+                        "proofLaunch":{
+                            "type":"boolean",
+                            "description":"Should a proof launch be performed."
+                        },
+                        "samplingNthSelection":{
+                            "type":"integer",
+                            "description":"Sampling Selection."
+                        },
+                        "proofLaunchEmail":{
+                            "type":"string",
+                            "description":"Email address for the proof launch."
+                        }
+                    }
+                },
+                "scheduleType":{
+                    "description":"Schedule Type.",
+                    "enum":[
+                        "NOW",
+                        "ONCE"
+                    ],
+                    "type":"string"
+                },
+                "scheduledTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                },
+                "recurringEndTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                }
+            }
+        },
+        "retrieve-campaignSchedule-response":{
+            "type":"object",
+            "title":"Email or Push Campaign Schedule",
+            "properties":{
+                "id":{
+                    "description":"ID of the schedule.",
+                    "type":"string"
+                },
+                "launchOptions":{
+                    "description":"Launch Options for the schedule.",
+                    "type":"object",
+                    "properties":{
+                        "progressChunk":{
+                            "enum":[
+                                "CHUNK_10K",
+                                "CHUNK_50K",
+                                "CHUNK_100K",
+                                "CHUNK_500K",
+                                "CHUNK_1M"
+                            ],
+                            "type":"string",
+                            "description":"Progress Chunk."
+                        },
+                        "recipientLimit":{
+                            "type":"integer",
+                            "description":"Recipient Limit."
+                        },
+                        "proofLaunchType":{
+                            "enum":[
+                                "LAUNCH_TO_ADDRESS",
+                                "LAUNCH_TO_PROOFLIST",
+                                "LAUNCH_TO_ADDRESS_USING_PROOFLIST"
+                            ],
+                            "type":"string",
+                            "description":"Proof Launch type."
+                        },
+                        "progressEmailAddresses":{
+                            "type":"array",
+                            "description":"Email addresses to inform of progress.",
+                            "items":{
+                                "type":"string"
+                            }
+                        },
+                        "samplingNthOffset":{
+                            "type":"integer",
+                            "description":"Sampling offset."
+                        },
+                        "samplingNthInterval":{
+                            "type":"integer",
+                            "description":"Sampling Interval."
+                        },
+                        "proofLaunch":{
+                            "type":"boolean",
+                            "description":"Should a proof launch be performed."
+                        },
+                        "samplingNthSelection":{
+                            "type":"integer",
+                            "description":"Sampling Selection."
+                        },
+                        "proofLaunchEmail":{
+                            "type":"string",
+                            "description":"Email address for the proof launch."
+                        }
+                    }
+                },
+                "scheduleType":{
+                    "description":"Schedule Type.",
+                    "enum":[
+                        "NOW",
+                        "ONCE",
+                        "RECURRING"
+                    ],
+                    "type":"string"
+                },
+                "scheduledTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                },
+                "recurringEndTime":{
+                    "description":"Date in the format yyyy-mm-dd HH:mm",
+                    "type":"string"
+                }
+            }
+        },
+        "campaignSchedule-collection":{
+            "title":"Email or Push Campaign Schedules",
+            "type":"object",
+            "properties":{
+                "items":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/retrieve-campaignSchedule-response"
+                    }
+                }
+            }
+        },
+        "triggerPushMessage":{
+            "title":"Trigger Push Message",
+            "type":"object",
+            "properties":{
+                "recipientData":{
+                    "description":"Array of Recipients with Optional Data",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "mobileNumber":{
+                                "type":"string",
+                                "description":"Recipient's Mobile Number."
+                            },
+                            "emailSHA256Hash":{
+                                "type":"string",
+                                "description":"Recipient's emailSHA256Hash."
+                            },
+                            "emailAddress":{
+                                "type":"string",
+                                "description":"Recipient's Email Address."
+                            },
+                            "listType":{
+                                "enum":[
+                                    "PUSH",
+                                    "PROFILE"
+                                ],
+                                "description":"Email Format.",
+                                "type":"string"
+                            },
+                            "optionalData":{
+                                "type":"array",
+                                "description":"Array of optional data containing name value pairs.",
+                                "items":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        },
+                                        "value":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            },
+                            "customerId":{
+                                "type":"string",
+                                "description":"Recipient's Customer ID."
+                            },
+                            "apiKey":{
+                                "type":"string",
+                                "description":"Recipient's apiKey."
+                            },
+                            "emailMD5Hash":{
+                                "type":"string",
+                                "description":"Recipient's emailMD5Hash."
+                            },
+                            "deviceId":{
+                                "type":"string",
+                                "description":"Recipient's deviceId."
+                            },
+                            "recipientId":{
+                                "type":"number",
+                                "description":"Recipient's RIID."
+                            }
+                        }
+                    }
+                }
+            },
+            "required":[
+                "recipientData"
+            ]
+        },
+        "triggerPush-response":{
+            "title":"Trigger Push Response",
+            "type":"array",
+            "description":"Array of Recipient Results.",
+            "items":{
+                "type":"object",
+                "description":"Response for individual recipient.",
+                "properties":{
+                    "errorMessage":{
+                        "type":"string",
+                        "description":"Error Message, if any, that occurred during the trigger operation."
+                    },
+                    "success":{
+                        "type":"boolean",
+                        "description":"Indicates success or failure."
+                    },
+                    "recipientId":{
+                        "type":"number",
+                        "description":"The Responsys ID (RIID) of the recipient."
+                    }
+                }
+            }
+        },
+        "listExtensions":{
+            "title":"Profile Extension",
+            "type":"object",
+            "properties":{
+                "profileExtension":{
+                    "description":"The Profile Extension Object",
+                    "required":[
+                        "objectName",
+                        "folderName"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "objectName":{
+                            "type":"string",
+                            "description":"The name of the Profile Extension"
+                        },
+                        "folderName":{
+                            "type":"string",
+                            "description":"The name of the folder in which the Profile Extension exists"
+                        }
+                    }
+                },
+                "fields":{
+                    "description":"The Profile Extension Fields",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "fieldName":{
+                                "type":"string",
+                                "description":"The Profile Extension Field Name"
+                            },
+                            "fieldType":{
+                                "type":"string",
+                                "description":"The Profile Extension Field Type"
+                            }
+                        }
+                    }
+                }
+            },
+            "required":[
+                "profileExtension",
+                "fields"
+            ]
+        },
+        "listExtensions-collection":{
+            "title":"List Extensions",
+            "type":"object",
+            "properties":{
+                "items":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/listExtensions"
+                    }
+                }
+            }
+        },
+        "supplementalTable":{
+            "title":"create supplemental table Request",
+            "type":"object",
+            "properties":{
+                "table":{
+                    "description":"Supplemental table name",
+                    "type":"object",
+                    "properties":{
+                        "objectName":{
+                            "type":"string",
+                            "description":"Name of the supplemental table"
+                        }
+                    }
+                },
+                "records":{
+                    "description":"Array of columns corresponding to the supplemental table. ",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "fieldName":{
+                                "type":"string",
+                                "description":"The supplemental table Field Name"
+                            },
+                            "fieldType":{
+                                "type":"string",
+                                "description":"The supplemental table Field Type"
+                            },
+                            "dataExtractionKey":{
+                                "type":"boolean",
+                                "description":"Data Extraction Key column of the supplemental table"
+                            }
+                        }
+                    }
+                },
+                "primaryKeys":{
+                    "description":"Array of primary keys corresponding to the supplemental table.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                }
+            }
+        },
+        "supplementalTableResponse":{
+            "title":"create supplemental table Response",
+            "type":"boolean",
+            "description":"true/false indicating success or failure."
+        },
+        "mergeTriggerSMS":{
+            "title":"Merge Trigger SMS",
+            "type":"object",
+            "properties":{
+                "mergeTriggerRecordData":{
+                    "description":"Record data that represents Field Names and corresponding values for the recipient.",
+                    "required":[
+                        "mergeTriggerRecords",
+                        "fieldNames"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "mergeTriggerRecords":{
+                            "type":"array",
+                            "description":"Array of values corresponding to the fieldNames. Each element in the array represents a single recipient.",
+                            "items":{
+                                "type":"object",
+                                "properties":{
+                                    "fieldValues":{
+                                        "type":"array",
+                                        "description":"Values corresponding to the fieldNames.",
+                                        "items":{
+                                            "type":"string"
+                                        }
+                                    },
+                                    "optionalData":{
+                                        "type":"array",
+                                        "description":"Optional data containing array of name value pairs.",
+                                        "items":{
+                                            "type":"object",
+                                            "properties":{
+                                                "name":{
+                                                    "type":"string"
+                                                },
+                                                "value":{
+                                                    "type":"string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "fieldNames":{
+                            "type":"array",
+                            "description":"Field Names in the Profile List",
+                            "items":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                },
+                "mergeRule":{
+                    "description":"Merge rule used to merge recipient records in a Profile List. Only used during the merge operation.",
+                    "type":"object",
+                    "properties":{
+                        "rejectRecordIfChannelEmpty":{
+                            "type":"string",
+                            "description":"String containing comma-separated channel codes that if specified will result in record rejection when the channel address field is null. Channel codes are 'E' (SMS), 'M' (Mobile), 'P' (Postal Code). For example 'E,M' would indicate that a record that has a null for SMS or Mobile Number value should be rejected. This parameter can also be set to null or to an empty string, which will cause the validation to not be performed for any channel, except if the matchColumnName1 parameter is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_. When matchColumnName1 is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_, then the null or empty string setting is effectively ignored for that channel."
+                        },
+                        "htmlValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'H' may represent a preference for HTML formatted email."
+                        },
+                        "textValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'T' may represent a preference for Text formatted email."
+                        },
+                        "matchColumnName1":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"First match column for determining whether an insert or update should occur."
+                        },
+                        "insertOnNoMatch":{
+                            "type":"boolean",
+                            "description":"Indicates what should be done for records where a match is not found (true = insert / false = no insert)."
+                        },
+                        "optinValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-in status data that represents an opt-in status. For example, 'I' may represent an opt-in status."
+                        },
+                        "defaultPermissionStatus":{
+                            "enum":[
+                                "OPTIN",
+                                "OPTOUT"
+                            ],
+                            "type":"string",
+                            "description":"This value must be specified as either OPTIN or OPTOUT and would be applied to all of the records contained in the API call. If this value is not explicitly specified, then it is set to OPTOUT."
+                        },
+                        "optoutValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-out status data that represents an optout status. For example, '0' may represent an opt-out status."
+                        },
+                        "matchColumnName2":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"Second match column for determining whether an insert or update should occur. (optional)."
+                        },
+                        "updateOnMatch":{
+                            "enum":[
+                                "REPLACE_ALL",
+                                "NO_UPDATE"
+                            ],
+                            "type":"string",
+                            "description":"Controls how the existing record should be updated."
+                        },
+                        "matchOperator":{
+                            "enum":[
+                                "NONE",
+                                "AND"
+                            ],
+                            "type":"string",
+                            "description":"Operator to join match column names"
+                        }
+                    }
+                }
+            },
+            "required":[
+                "mergeTriggerRecordData",
+                "mergeRule"
+            ]
+        },
+        "triggerSmsResponse":{
+            "title":"Trigger SMS Response",
+            "type":"array",
+            "description":"Array of Recipient Results.",
+            "items":{
+                "type":"object",
+                "description":"Response for individual recipient.",
+                "properties":{
+                    "errorMessage":{
+                        "type":"string",
+                        "description":"Error Message, if any, that occurred during the merge or trigger operations."
+                    },
+                    "success":{
+                        "type":"boolean",
+                        "description":"Indicates success or failure."
+                    },
+                    "recipientId":{
+                        "type":"number",
+                        "description":"The Responsys ID (RIID) of the recipient."
+                    }
+                }
+            }
+        },
+        "triggerEmailMessage":{
+            "title":"Trigger Email Message",
+            "type":"object",
+            "properties":{
+                "recipientData":{
+                    "description":"Array of Recipients with Optional Data",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "recipient":{
+                                "type":"object",
+                                "description":"Information about the Recipient.",
+                                "properties":{
+                                    "customerId":{
+                                        "type":"string",
+                                        "description":"Recipient's Customer ID."
+                                    },
+                                    "emailAddress":{
+                                        "type":"string",
+                                        "description":"Recipient's Email Address."
+                                    },
+                                    "listName":{
+                                        "type":"object",
+                                        "description":"Profile List to which the Recipient belongs.",
+                                        "properties":{
+                                            "folderName":{
+                                                "type":"string",
+                                                "description":"Folder Name"
+                                            },
+                                            "objectName":{
+                                                "type":"string",
+                                                "description":"Profile List Name."
+                                            }
+                                        }
+                                    },
+                                    "recipientId":{
+                                        "type":"number",
+                                        "description":"Recipient's RIID."
+                                    },
+                                    "mobileNumber":{
+                                        "type":"string",
+                                        "description":"Recipient's Mobile Number."
+                                    },
+                                    "emailFormat":{
+                                        "enum":[
+                                            "HTML_FORMAT",
+                                            "TEXT_FORMAT"
+                                        ],
+                                        "type":"string",
+                                        "description":"Email Format."
+                                    }
+                                },
+                                "required":[
+                                    "customerId",
+                                    "emailAddress",
+                                    "recipientId",
+                                    "mobileNumber",
+                                    "emailFormat"
+                                ]
+                            },
+                            "optionalData":{
+                                "type":"array",
+                                "description":"Array of optional data containing name value pairs.",
+                                "items":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        },
+                                        "value":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "required":[
+                            "recipient",
+                            "optionalData"
+                        ]
+                    }
+                }
+            },
+            "required":[
+                "recipientData"
+            ]
+        },
+        "triggerEmail-response":{
+            "title":"Trigger Email Response",
+            "type":"array",
+            "description":"Array of Recipient Results.",
+            "items":{
+                "type":"object",
+                "description":"Response for individual recipient.",
+                "properties":{
+                    "errorMessage":{
+                        "type":"string",
+                        "description":"Error Message, if any, that occurred during the trigger operation."
+                    },
+                    "success":{
+                        "type":"boolean",
+                        "description":"Indicates success or failure."
+                    },
+                    "recipientId":{
+                        "type":"number",
+                        "description":"The Responsys ID (RIID) of the recipient."
+                    }
+                }
+            }
+        },
+        "mergeTriggerEmail":{
+            "title":"Merge Trigger Email",
+            "type":"object",
+            "properties":{
+                "mergeTriggerRecordData":{
+                    "description":"Record data that represents Field Names and corresponding values for the recipient.",
+                    "required":[
+                        "mergeTriggerRecords",
+                        "fieldNames"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "mergeTriggerRecords":{
+                            "type":"array",
+                            "description":"Array of values corresponding to the fieldNames. Each element in the array represents a single recipient.",
+                            "items":{
+                                "type":"object",
+                                "properties":{
+                                    "fieldValues":{
+                                        "type":"array",
+                                        "description":"Values corresponding to the fieldNames.",
+                                        "items":{
+                                            "type":"string"
+                                        }
+                                    },
+                                    "optionalData":{
+                                        "type":"array",
+                                        "description":"Optional data containing array of name value pairs.",
+                                        "items":{
+                                            "type":"object",
+                                            "properties":{
+                                                "name":{
+                                                    "type":"string"
+                                                },
+                                                "value":{
+                                                    "type":"string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "fieldNames":{
+                            "type":"array",
+                            "description":"Field Names in the Profile List",
+                            "items":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                },
+                "mergeRule":{
+                    "description":"Merge rule used to merge recipient records in a Profile List. Only used during the merge operation.",
+                    "type":"object",
+                    "properties":{
+                        "rejectRecordIfChannelEmpty":{
+                            "type":"string",
+                            "description":"String containing comma-separated channel codes that if specified will result in record rejection when the channel address field is null. Channel codes are 'E' (Email), 'M' (Mobile), 'P' (Postal Code). For example 'E,M' would indicate that a record that has a null for Email or Mobile Number value should be rejected. This parameter can also be set to null or to an empty string, which will cause the validation to not be performed for any channel, except if the matchColumnName1 parameter is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_. When matchColumnName1 is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_, then the null or empty string setting is effectively ignored for that channel."
+                        },
+                        "htmlValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'H' may represent a preference for HTML formatted email."
+                        },
+                        "textValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'T' may represent a preference for Text formatted email."
+                        },
+                        "matchColumnName1":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"First match column for determining whether an insert or update should occur."
+                        },
+                        "insertOnNoMatch":{
+                            "type":"boolean",
+                            "description":"Indicates what should be done for records where a match is not found (true = insert / false = no insert)."
+                        },
+                        "optinValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-in status data that represents an opt-in status. For example, 'I' may represent an opt-in status."
+                        },
+                        "defaultPermissionStatus":{
+                            "enum":[
+                                "OPTIN",
+                                "OPTOUT"
+                            ],
+                            "type":"string",
+                            "description":"This value must be specified as either OPTIN or OPTOUT and would be applied to all of the records contained in the API call. If this value is not explicitly specified, then it is set to OPTOUT."
+                        },
+                        "optoutValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-out status data that represents an optout status. For example, '0' may represent an opt-out status."
+                        },
+                        "matchColumnName2":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"Second match column for determining whether an insert or update should occur. (optional)."
+                        },
+                        "updateOnMatch":{
+                            "enum":[
+                                "REPLACE_ALL",
+                                "NO_UPDATE"
+                            ],
+                            "type":"string",
+                            "description":"Controls how the existing record should be updated."
+                        },
+                        "matchOperator":{
+                            "enum":[
+                                "NONE",
+                                "AND"
+                            ],
+                            "type":"string",
+                            "description":"Operator to join match column names"
+                        }
+                    }
+                }
+            },
+            "required":[
+                "mergeTriggerRecordData",
+                "mergeRule"
+            ]
+        },
+        "triggerEmailResponse":{
+            "title":"Trigger Email Response",
+            "type":"array",
+            "description":"Array of Recipient Results.",
+            "items":{
+                "type":"object",
+                "description":"Response for individual recipient.",
+                "properties":{
+                    "errorMessage":{
+                        "type":"string",
+                        "description":"Error Message, if any, that occurred during the merge or trigger operations."
+                    },
+                    "success":{
+                        "type":"boolean",
+                        "description":"Indicates success or failure."
+                    },
+                    "recipientId":{
+                        "type":"number",
+                        "description":"The Responsys ID (RIID) of the recipient."
+                    }
+                }
+            }
+        },
+        "profileListRecipients":{
+            "title":"Profile List Recipients",
+            "type":"object",
+            "properties":{
+                "recordData":{
+                    "description":"Record data that represents Field Names and corresponding values for the recipient.",
+                    "required":[
+                        "fieldNames",
+                        "records"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "fieldNames":{
+                            "type":"array",
+                            "description":"Field Names in the Profile List",
+                            "items":{
+                                "type":"string"
+                            }
+                        },
+                        "records":{
+                            "type":"array",
+                            "description":"Array of values corresponding to the fieldNames. Each element in the array represents a single recipient.",
+                            "items":{
+                                "type":"array",
+                                "description":"Field Values for the recipient in the Profile List",
+                                "items":{
+                                    "type":"string"
+                                }
+                            }
+                        },
+                        "mapTemplateName":{
+                            "type":"string",
+                            "description":"The Map Template in Responsys that can be used to map Field Names of the Profile List to Column Names."
+                        }
+                    }
+                },
+                "mergeRule":{
+                    "description":"Merge rule used to merge recipient records in a Profile List. Only used during the merge operation.",
+                    "type":"object",
+                    "properties":{
+                        "rejectRecordIfChannelEmpty":{
+                            "type":"string",
+                            "description":"String containing comma-separated channel codes that if specified will result in record rejection when the channel address field is null. Channel codes are 'E' (Email), 'M' (Mobile), 'P' (Postal Code). For example 'E,M' would indicate that a record that has a null for Email or Mobile Number value should be rejected. This parameter can also be set to null or to an empty string, which will cause the validation to not be performed for any channel, except if the matchColumnName1 parameter is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_. When matchColumnName1 is set to EMAIL_ADDRESS_ or MOBILE_NUMBER_, then the null or empty string setting is effectively ignored for that channel."
+                        },
+                        "htmlValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'H' may represent a preference for HTML formatted email."
+                        },
+                        "textValue":{
+                            "type":"string",
+                            "description":"Value of incoming preferred email format data. For example, 'T' may represent a preference for Text formatted email."
+                        },
+                        "matchColumnName1":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"First match column for determining whether an insert or update should occur."
+                        },
+                        "insertOnNoMatch":{
+                            "type":"boolean",
+                            "description":"Indicates what should be done for records where a match is not found (true = insert / false = no insert)."
+                        },
+                        "optinValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-in status data that represents an opt-in status. For example, 'I' may represent an opt-in status."
+                        },
+                        "defaultPermissionStatus":{
+                            "enum":[
+                                "OPTIN",
+                                "OPTOUT"
+                            ],
+                            "type":"string",
+                            "description":"This value must be specified as either OPTIN or OPTOUT and would be applied to all of the records contained in the API call. If this value is not explicitly specified, then it is set to OPTOUT."
+                        },
+                        "optoutValue":{
+                            "type":"string",
+                            "description":"Value of incoming opt-out status data that represents an optout status. For example, '0' may represent an opt-out status."
+                        },
+                        "matchColumnName2":{
+                            "enum":[
+                                "RIID_",
+                                "CUSTOMER_ID_",
+                                "EMAIL_ADDRESS_",
+                                "MOBILE_NUMBER_",
+                                "EMAIL_MD5_HASH_",
+                                "EMAIL_SHA256_HASH_"
+                            ],
+                            "type":"string",
+                            "description":"Second match column for determining whether an insert or update should occur. (optional)."
+                        },
+                        "updateOnMatch":{
+                            "enum":[
+                                "REPLACE_ALL",
+                                "NO_UPDATE"
+                            ],
+                            "type":"string",
+                            "description":"Controls how the existing record should be updated."
+                        },
+                        "matchOperator":{
+                            "enum":[
+                                "NONE",
+                                "AND"
+                            ],
+                            "type":"string",
+                            "description":"Operator to join match column names"
+                        }
+                    }
+                }
+            },
+            "required":[
+                "recordData",
+                "mergeRule"
+            ]
+        },
+        "retrieve-email-campaigns-response":{
+            "type":"object",
+            "title":"Campaign",
+            "properties":{
+                "id":{
+                    "description":"ID number of the campaign.",
+                    "type":"integer"
+                },
+                "name":{
+                    "description":"Name of the campaign.",
+                    "type":"string"
+                },
+                "folderName":{
+                    "description":"Folder name for the campaign.",
+                    "type":"string"
+                },
+                "type":{
+                    "description":"Type of the campaign.",
+                    "enum":[
+                        "EMAIL"
+                    ],
+                    "type":"string"
+                },
+                "description":{
+                    "description":"Description of the campaign.",
+                    "type":"string"
+                },
+                "marketingProgram":{
+                    "description":"Type of marketing program. The values are defined by the Account Administrator.",
+                    "type":"string"
+                },
+                "marketingStrategy":{
+                    "description":"Type of marketing strategy. The values are defined by the Account Administrator.",
+                    "type":"string"
+                },
+                "purpose":{
+                    "description":"Purpose of the campaign.",
+                    "enum":[
+                        "PROMOTIONAL",
+                        "TRANSACTIONAL"
+                    ],
+                    "type":"string"
+                },
+                "listName":{
+                    "description":"Profile list name which contains the audience for this campaign.",
+                    "type":"string"
+                },
+                "filterPaths":{
+                    "description":"Paths of filter to be used for this campaign. This can be used to select a group of customers to receive specific messages. Either standard filter or SQL View can be specified.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "refiningDataSourcePath":{
+                    "description":"Path of additional data sources to be used for this campaign.",
+                    "type":"string"
+                },
+                "proofListPath":{
+                    "description":"Before sending the campaign to customers, send it to proof list for testing.",
+                    "type":"string"
+                },
+                "seedListPath":{
+                    "description":"Seed lists recipients receive the campaign when it is launched but are excluded from live report.",
+                    "type":"string"
+                },
+                "segmentPaths":{
+                    "description":"Segmentations are used to divide a list into segments using attributes of a profile extension table or profile list.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementaryCampaignDataSourcePaths":{
+                    "description":"Supplementary data sources can be used for inclusions or exclusions of the audience.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementaryLookupDataSourcePaths":{
+                    "description":"Supplementary data sources can be used for inclusions or exclusions of the audience.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementaryProofDataSourcePaths":{
+                    "description":"Supplementary proof data sources can be used for inclusions or exclusions from proof list.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementarySeedDataSourcePaths":{
+                    "description":"Supplementary seed data sources can be used for inclusions or exclusions from seed list.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "suppressionListPaths":{
+                    "description":"This is used to exclude recipients from data sources.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "htmlMessagePath":{
+                    "description":"HTML message folder and path for the campaign.",
+                    "type":"string"
+                },
+                "textMessagePath":{
+                    "description":"Text message folder and path for the campaign.",
+                    "type":"string"
+                },
+                "enableLinkTracking":{
+                    "description":"Enable to track the links in a campaign.",
+                    "type":"boolean"
+                },
+                "linkTablePath":{
+                    "description":"Link table to be included in this campaign.",
+                    "type":"string"
+                },
+                "attachmentPaths":{
+                    "description":"Attachments for the campaign.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "enableExternalTracking":{
+                    "description":"Enable to use third-party web analytics service that use tracking parameters appended to the URLs.",
+                    "type":"boolean"
+                },
+                "externalTrackingParams":{
+                    "description":"Map<String, String> of Name and value of external tracking parameters.",
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                },
+                "subject":{
+                    "description":"Campaign Subject.",
+                    "type":"string"
+                },
+                "fromName":{
+                    "description":"From Name for the campaign.",
+                    "type":"string"
+                },
+                "fromEmail":{
+                    "description":"From Email Address for the campaign.",
+                    "type":"string"
+                },
+                "replyToEmail":{
+                    "description":"Reply To Email Address for the campaign.",
+                    "type":"string"
+                },
+                "campaignVariables":{
+                    "description":"Map<String, String> of Name and value of campaign variables which are used as default values for text replacement.",
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                },
+                "useUTF8":{
+                    "description":"Use UTF8 encoding for messages.",
+                    "type":"boolean"
+                },
+                "locale":{
+                    "description":"The default recipient locale for this account.",
+                    "type":"string"
+                },
+                "trackHTMLOpens":{
+                    "description":"Enable tracking when each recipient with HTML capability opened the email.",
+                    "type":"boolean"
+                },
+                "trackConversions":{
+                    "description":"This applies only when link tracking is enabled for the campaign. This option can be used to record conversion when clicking a link and following through a specific web page.",
+                    "type":"boolean"
+                },
+                "sendTextIfHTMLUnknown":{
+                    "description":"If HTML ability is unknown, this option allows sending MIME messages to ensure message text is displayed correctly.",
+                    "type":"boolean"
+                },
+                "segmentTrackingColumnName":{
+                    "description":"Column name for tracking segments.",
+                    "type":"string"
+                },
+                "unsubscribeOption":{
+                    "description":"The unsubscribe option for this campaign.",
+                    "enum":[
+                        "NO_OPTOUT_BUTTON",
+                        "OPTOUT_SINGLE_CLICK",
+                        "OPTOUT_FORM"
+                    ],
+                    "type":"string"
+                },
+                "unsubscribeFormName":{
+                    "description":"Form name to be used for unsubscribing..",
+                    "type":"string"
+                },
+                "autoCloseOption":{
+                    "description":"Auto close options for this campaign.",
+                    "enum":[
+                        "NO_AUTO_CLOSE",
+                        "AUTO_CLOSE_X_DAYS_AFTER_LAUNCH",
+                        "AUTO_CLOSE_X_DAYS_AFTER_LAST_RESPONSE",
+                        "AUTO_CLOSE_ON_DATE"
+                    ],
+                    "type":"string"
+                },
+                "autoCloseValue":{
+                    "description":"This represents number of days if autoCloseOption is AUTO_CLOSE_X_DAYS_AFTER_LAUNCH or AUTO_CLOSE_X_DAYS_AFTER_LAST_RESPONSE.This represents date if autoCloseOption is AUTO_CLOSE_ON_DATE.",
+                    "type":"string"
+                },
+                "closedCampaignURL":{
+                    "description":"The URL to redirect to if a recipient clicks on a link of an already closed campaign.",
+                    "type":"string"
+                },
+                "externalCampaignCode":{
+                    "description":"External campaign code.",
+                    "type":"string"
+                },
+                "salesForceCampaignId":{
+                    "description":"Salesforce campaign id.",
+                    "type":"string"
+                },
+                "bccEmail":{
+                    "description":"Bcc Email Address for the campaign.",
+                    "type":"string"
+                }
+            }
+        },
+        "retrieve-push-campaigns-response":{
+            "type":"object",
+            "title":"Campaign",
+            "properties":{
+                "id":{
+                    "description":"ID number of the campaign.",
+                    "type":"integer"
+                },
+                "name":{
+                    "description":"Name of the campaign.",
+                    "type":"string"
+                },
+                "folderName":{
+                    "description":"Folder name for the campaign.",
+                    "type":"string"
+                },
+                "type":{
+                    "description":"Type of the campaign.",
+                    "enum":[
+                        "PUSH"
+                    ],
+                    "type":"string"
+                },
+                "description":{
+                    "description":"Description of the campaign.",
+                    "type":"string"
+                },
+                "marketingProgram":{
+                    "description":"Type of marketing program. The values are defined by the Account Administrator.",
+                    "type":"string"
+                },
+                "marketingStrategy":{
+                    "description":"Type of marketing strategy. The values are defined by the Account Administrator.",
+                    "type":"string"
+                },
+                "purpose":{
+                    "description":"Purpose of the campaign.",
+                    "enum":[
+                        "PROMOTIONAL",
+                        "TRANSACTIONAL"
+                    ],
+                    "type":"string"
+                },
+                "listName":{
+                    "description":"Profile list name which contains the audience for this campaign.",
+                    "type":"string"
+                },
+                "channelList":{
+                    "description":"App Channel List name associated with the campaign. Returned only for the “Get all Push campaigns” API. ",
+                    "type":"string"
+                },
+                "filterPaths":{
+                    "description":"Paths of filter to be used for this campaign. This can be used to select a group of customers to receive specific messages. Either standard filter or SQL View can be specified.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "refiningDataSourcePath":{
+                    "description":"Path of additional data sources to be used for this campaign.",
+                    "type":"string"
+                },
+                "proofListPath":{
+                    "description":"Before sending the campaign to customers, send it to proof list for testing.",
+                    "type":"string"
+                },
+                "seedListPath":{
+                    "description":"Seed lists recipients receive the campaign when it is launched but are excluded from live report.",
+                    "type":"string"
+                },
+                "segmentPaths":{
+                    "description":"Segmentations are used to divide a list into segments using attributes of a profile extension table or profile list.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementaryCampaignDataSourcePaths":{
+                    "description":"Supplementary data sources can be used for inclusions or exclusions of the audience.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementaryLookupDataSourcePaths":{
+                    "description":"Supplementary data sources can be used for inclusions or exclusions of the audience.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementaryProofDataSourcePaths":{
+                    "description":"Supplementary proof data sources can be used for inclusions or exclusions from proof list.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "supplementarySeedDataSourcePaths":{
+                    "description":"Supplementary seed data sources can be used for inclusions or exclusions from seed list.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "suppressionListPaths":{
+                    "description":"This is used to exclude recipients from data sources.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "htmlMessagePath":{
+                    "description":"HTML message folder and path for the campaign.",
+                    "type":"string"
+                },
+                "textMessagePath":{
+                    "description":"Text message folder and path for the campaign.",
+                    "type":"string"
+                },
+                "enableLinkTracking":{
+                    "description":"Enable to track the links in a campaign.",
+                    "type":"boolean"
+                },
+                "linkTablePath":{
+                    "description":"Link table to be included in this campaign.",
+                    "type":"string"
+                },
+                "attachmentPaths":{
+                    "description":"Attachments for the campaign.",
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "enableExternalTracking":{
+                    "description":"Enable to use third-party web analytics service that use tracking parameters appended to the URLs.",
+                    "type":"boolean"
+                },
+                "externalTrackingParams":{
+                    "description":"Map<String, String> of Name and value of external tracking parameters.",
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                },
+                "subject":{
+                    "description":"Campaign Subject.",
+                    "type":"string"
+                },
+                "fromName":{
+                    "description":"From Name for the campaign.",
+                    "type":"string"
+                },
+                "fromEmail":{
+                    "description":"From Email Address for the campaign.",
+                    "type":"string"
+                },
+                "replyToEmail":{
+                    "description":"Reply To Email Address for the campaign.",
+                    "type":"string"
+                },
+                "campaignVariables":{
+                    "description":"Map<String, String> of Name and value of campaign variables which are used as default values for text replacement.",
+                    "type":"object",
+                    "additionalProperties":{
+                        "type":"string"
+                    }
+                },
+                "useUTF8":{
+                    "description":"Use UTF8 encoding for messages.",
+                    "type":"boolean"
+                },
+                "locale":{
+                    "description":"The default recipient locale for this account.",
+                    "type":"string"
+                },
+                "trackHTMLOpens":{
+                    "description":"Enable tracking when each recipient with HTML capability opened the email.",
+                    "type":"boolean"
+                },
+                "trackConversions":{
+                    "description":"This applies only when link tracking is enabled for the campaign. This option can be used to record conversion when clicking a link and following through a specific web page.",
+                    "type":"boolean"
+                },
+                "sendTextIfHTMLUnknown":{
+                    "description":"If HTML ability is unknown, this option allows sending MIME messages to ensure message text is displayed correctly.",
+                    "type":"boolean"
+                },
+                "segmentTrackingColumnName":{
+                    "description":"Column name for tracking segments.",
+                    "type":"string"
+                },
+                "unsubscribeOption":{
+                    "description":"The unsubscribe option for this campaign.",
+                    "enum":[
+                        "NO_OPTOUT_BUTTON",
+                        "OPTOUT_SINGLE_CLICK",
+                        "OPTOUT_FORM"
+                    ],
+                    "type":"string"
+                },
+                "unsubscribeFormName":{
+                    "description":"Form name to be used for unsubscribing..",
+                    "type":"string"
+                },
+                "autoCloseOption":{
+                    "description":"Auto close options for this campaign.",
+                    "enum":[
+                        "NO_AUTO_CLOSE",
+                        "AUTO_CLOSE_X_DAYS_AFTER_LAUNCH",
+                        "AUTO_CLOSE_X_DAYS_AFTER_LAST_RESPONSE",
+                        "AUTO_CLOSE_ON_DATE"
+                    ],
+                    "type":"string"
+                },
+                "autoCloseValue":{
+                    "description":"This represents number of days if autoCloseOption is AUTO_CLOSE_X_DAYS_AFTER_LAUNCH or AUTO_CLOSE_X_DAYS_AFTER_LAST_RESPONSE.This represents date if autoCloseOption is AUTO_CLOSE_ON_DATE.",
+                    "type":"string"
+                },
+                "closedCampaignURL":{
+                    "description":"The URL to redirect to if a recipient clicks on a link of an already closed campaign.",
+                    "type":"string"
+                },
+                "externalCampaignCode":{
+                    "description":"External campaign code.",
+                    "type":"string"
+                },
+                "salesForceCampaignId":{
+                    "description":"Salesforce campaign id.",
+                    "type":"string"
+                },
+                "bccEmail":{
+                    "description":"Bcc Email Address for the campaign.",
+                    "type":"string"
+                }
+            }
+        },
+        "email-campaigns-collection":{
+            "title":"Email Campaigns",
+            "type":"object",
+            "properties":{
+                "campaigns":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/retrieve-email-campaigns-response"
+                    }
+                }
+            }
+        },
+        "push-campaigns-collection":{
+            "title":"Push Campaigns",
+            "type":"object",
+            "properties":{
+                "campaigns":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/retrieve-push-campaigns-response"
+                    }
+                }
+            }
+        },
+        "profileExtensionRecipients":{
+            "title":"Profile Extension Recipients",
+            "type":"object",
+            "properties":{
+                "recordData":{
+                    "description":"Record data that represents Field Names and corresponding values for the recipient.",
+                    "required":[
+                        "fieldNames",
+                        "records"
+                    ],
+                    "type":"object",
+                    "properties":{
+                        "fieldNames":{
+                            "type":"array",
+                            "description":"Field Names in the Profile List",
+                            "items":{
+                                "type":"string"
+                            }
+                        },
+                        "records":{
+                            "type":"array",
+                            "description":"Array of values corresponding to the fieldNames. Each element in the array represents a single recipient.",
+                            "items":{
+                                "type":"array",
+                                "description":"Field Values for the recipient in the Profile List",
+                                "items":{
+                                    "type":"string"
+                                }
+                            }
+                        },
+                        "mapTemplateName":{
+                            "type":"string",
+                            "description":"The Map Template in Responsys that can be used to map Field Names of the Profile List to Column Names."
+                        }
+                    }
+                },
+                "insertOnNoMatch":{
+                    "description":"Specifies whether a recipient record should be inserted into the Profile Extension if it does not already exist. Only used during the merge operation.",
+                    "type":"boolean"
+                },
+                "updateOnMatch":{
+                    "description":"Specifies whether a recipient record should be updated in the Profile Extension if it already exists. Only used during the merge operation.",
+                    "enum":[
+                        "REPLACE_ALL",
+                        "NO_UPDATE"
+                    ]
+                },
+                "matchColumn":{
+                    "description":"The column name to be used to match the recipient record to the Profile Extension records. Only used during the merge operation.",
+                    "enum":[
+                        "RIID",
+                        "CUSTOMER_ID",
+                        "EMAIL_ADDRESS",
+                        "MOBILE_NUMBER",
+                        "EMAIL_MD5_HASH",
+                        "EMAIL_SHA256_HASH"
+                    ]
+                }
+            },
+            "required":[
+                "recordData",
+                "insertOnNoMatch",
+                "updateOnMatch",
+                "matchColumn"
+            ]
+        },
+        "clDocs":{
+            "title":"Content Library Documents",
+            "type":"object",
+            "properties":{
+                "docPath":{
+                    "description":"The complete path of the document starting with '/contentlibrary'.",
+                    "type":"string"
+                },
+                "content":{
+                    "description":"Document content.",
+                    "type":"string"
+                }
+            },
+            "required":[
+                "docPath",
+                "content"
+            ]
+        },
+        "copy-content-request":{
+            "type":"object",
+            "title":"copy content document Request",
+            "properties":{
+                "documentPath":{
+                    "description":"Path of source Document",
+                    "type":"string"
+                }
+            }
+        },
+        "clDocImages":{
+            "title":"Content Library Document Images",
+            "type":"object",
+            "properties":{
+                "documentPath":{
+                    "description":"The complete path of the document starting with '/contentlibrary'.",
+                    "type":"string"
+                },
+                "imageData":{
+                    "description":"Images in the content library document.",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "itemPath":{
+                                "type":"string",
+                                "description":"Name of the image in the content library document."
+                            },
+                            "itemData":{
+                                "type":"string",
+                                "format":"byte",
+                                "description":"Base64 encoded binary string of the image content."
+                            }
+                        }
+                    }
+                }
+            },
+            "required":[
+                "documentPath",
+                "imageData"
+            ]
+        },
+        "clItems":{
+            "title":"Content Library Media Files",
+            "type":"object",
+            "properties":{
+                "itemPath":{
+                    "description":"The complete path of the media file starting with /contentlibrary.",
+                    "type":"string"
+                },
+                "itemData":{
+                    "description":"Base64 encoded binary string of the media file content.",
+                    "type":"string"
+                }
+            },
+            "required":[
+                "itemPath",
+                "itemData"
+            ]
+        },
+        "copy-contentItem-request":{
+            "type":"object",
+            "title":"copy content document Request",
+            "properties":{
+                "itemPath":{
+                    "description":"Path of source item",
+                    "type":"string"
+                }
+            }
+        },
+        "triggerCustomEvent":{
+            "title":"Trigger Custom Event",
+            "type":"object",
+            "properties":{
+                "customEvent":{
+                    "description":"customEvent.",
+                    "type":"object",
+                    "properties":{
+                        "eventNumberDataMapping":{
+                            "type":"string",
+                            "description":"custom eventNumberDataMapping."
+                        },
+                        "eventDateDataMapping":{
+                            "type":"string",
+                            "description":"custom eventDateDataMapping."
+                        },
+                        "eventStringDataMapping":{
+                            "type":"string",
+                            "description":"custom eventStringDataMapping."
+                        }
+                    }
+                },
+                "recipientData":{
+                    "description":"Array of Recipients with Optional Data",
+                    "type":"array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "recipient":{
+                                "type":"object",
+                                "description":"Information about the Recipient.",
+                                "properties":{
+                                    "customerId":{
+                                        "type":"string",
+                                        "description":"Recipient's Customer ID."
+                                    },
+                                    "emailAddress":{
+                                        "type":"string",
+                                        "description":"Recipient's Email Address."
+                                    },
+                                    "listName":{
+                                        "type":"object",
+                                        "description":"Profile List to which the Recipient belongs.",
+                                        "properties":{
+                                            "folderName":{
+                                                "type":"string",
+                                                "description":"Folder Name"
+                                            },
+                                            "objectName":{
+                                                "type":"string",
+                                                "description":"Profile List Name."
+                                            }
+                                        }
+                                    },
+                                    "recipientId":{
+                                        "type":"number",
+                                        "description":"Recipient's RIID."
+                                    },
+                                    "mobileNumber":{
+                                        "type":"string",
+                                        "description":"Recipient's Mobile Number."
+                                    },
+                                    "emailFormat":{
+                                        "enum":[
+                                            "HTML_FORMAT",
+                                            "TEXT_FORMAT"
+                                        ],
+                                        "type":"string",
+                                        "description":"Email Format."
+                                    }
+                                },
+                                "required":[
+                                    "customerId",
+                                    "emailAddress",
+                                    "listName",
+                                    "recipientId",
+                                    "mobileNumber",
+                                    "emailFormat"
+                                ]
+                            },
+                            "optionalData":{
+                                "type":"array",
+                                "description":"Array of optional data containing name value pairs.",
+                                "items":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        },
+                                        "value":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "required":[
+                            "recipient",
+                            "optionalData"
+                        ]
+                    }
+                }
+            },
+            "required":[
+                "customEvent",
+                "recipientData"
+            ]
+        },
+        "triggerEvent-response":{
+            "title":"Trigger Custom Event Response",
+            "type":"array",
+            "description":"Array of Recipient Results.",
+            "items":{
+                "type":"object",
+                "description":"Response for individual recipient.",
+                "properties":{
+                    "errorMessage":{
+                        "type":"string",
+                        "description":"Error Message, if any, that occurred during the merge or trigger operations."
+                    },
+                    "success":{
+                        "type":"boolean",
+                        "description":"Indicates success or failure."
+                    },
+                    "recipientId":{
+                        "type":"number",
+                        "description":"The Responsys ID (RIID) of the recipient."
+                    }
+                }
+            }
+        }
+    },
+    "tags":[
+        {
+            "name":"Content Library Document Images",
+            "description":"Content Library Document Images"
+        },
+        {
+            "name":"Content Library Documents",
+            "description":"Documents in the Responsys Interact Suite Content Library."
+        },
+        {
+            "name":"Content Library Folders",
+            "description":"Folders in the Responsys Interact Suite Content Library."
+        },
+        {
+            "name":"Content Library Media Items",
+            "description":"Media Files in the Responsys Interact Suite Content Library."
+        },
+        {
+            "name":"Email or Push Campaign Schedule",
+            "description":"Schedule an Email or a Push Campaign"
+        },
+        {
+            "name":"Get All Campaigns",
+            "description":"Obtain the campaign properties for all EMD Email or all Push campaigns."
+        },
+        {
+            "name":"List Extensions",
+            "description":"Profile Extensions for a Profile List in the Responsys Interact Suite"
+        },
+        {
+            "name":"Merge Trigger Email",
+            "description":"Merge Members to a Profile List and Send Responsys Email Campaigns to them."
+        },
+        {
+            "name":"Merge Trigger Email With Attachments",
+            "description":"Merge Members to a Profile List and Send Responsys Email Campaigns with attachments to them."
+        },
+        {
+            "name":"Merge Trigger SMS",
+            "description":"Merge Members to a Profile List and Send Responsys SMS Campaigns to them"
+        },
+        {
+            "name":"Profile Extension Recipients",
+            "description":"One or more Recipients within a Profile Extension Table in the Responsys Interact Suite."
+        },
+        {
+            "name":"Profile List Recipients",
+            "description":"One or more Recipients within a Profile List in the Responsys Interact Suite."
+        },
+        {
+            "name":"Profile Lists",
+            "description":"Profile Lists in the Responsys Interact Suite"
+        },
+        {
+            "name":"Supplemental Table",
+            "description":"Create new Supplemental Table"
+        },
+        {
+            "name":"Supplemental Table Members",
+            "description":"Members of a Supplemental Data Table in the Responsys Interact Suite."
+        },
+        {
+            "name":"Trigger Custom Event",
+            "description":"Raise Custom Events for Cross-channel Marketing Programs."
+        },
+        {
+            "name":"Trigger Email Message",
+            "description":"Send Responsys Email Campaigns to existing members of a Profile List."
+        },
+        {
+            "name":"Trigger Push Message",
+            "description":"Send Responsys Push Campaigns to existing members of a Profile List"
+        }
+    ]
+}
